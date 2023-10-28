@@ -1,0 +1,23 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('FlawFinder Analysis') {
+            steps {
+                script {
+                    def flawfinder = load 'path/to/flawfinder.groovy'
+                    flawfinder.flawfinderAnalysis()
+                }
+            }
+        }
+
+        stage('Semgrep Analysis') {
+            steps {
+                script {
+                    def semgrep = load 'path/to/semgrep_scan.groovy'
+                    semgrep.semgrepAnalysis()
+                }
+            }
+        }
+    }
+}
